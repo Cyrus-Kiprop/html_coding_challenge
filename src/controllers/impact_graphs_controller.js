@@ -14,7 +14,31 @@ export default class ImpactGraphs extends Controller {
     query: String,
   };
 
-  connect() {}
+  connect() {
+    mockApiRequest()
+      .then((response) => {
+        if (!response.ok) throw Error(response.statusText);
+        response.json().then((result) => {
+          // clear the localStorage for stale data
+          localStorage.removeItem('data');
+
+          // render dropdown items
+          renderDropdownItems(Object.keys(result.impacts), this.categoryTarget);
+
+          // cache the data on the local storage to avoid multiple requests to the server
+          setItem('data', JSON.stringify(result)).then(() => {
+            return getItem('data').then((data) => {
+              // render the bar graph based on the default filter query
+              const initailQuery = Object.keys(JSON.parse(data).impacts)[0];
+              this.updateUserInterface(initailQuery);
+            });
+          });
+        });
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
 
   // handler functions  && eventListeners
   handleBarMouseover(event) {
