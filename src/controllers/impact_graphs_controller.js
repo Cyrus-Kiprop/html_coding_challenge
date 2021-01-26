@@ -8,13 +8,21 @@ const { drawBars, renderDropdownItems } = uiUtils;
 const { setItem, getItem } = asyncLocalStorage;
 
 export default class ImpactGraphs extends Controller {
-  static targets = ['category', 'title', 'stats', 'svgBar', 'tooltip'];
+  static targets = [
+    'category',
+    'title',
+    'stats',
+    'svgBar',
+    'tooltip',
+    'loader',
+  ];
 
   static values = {
     query: String,
   };
 
   connect() {
+    this.loaderTarget.style.display = 'block';
     mockApiRequest()
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
@@ -30,6 +38,10 @@ export default class ImpactGraphs extends Controller {
             return getItem('data').then((data) => {
               // render the bar graph based on the default filter query
               const initailQuery = Object.keys(JSON.parse(data).impacts)[0];
+
+              // disable loader
+              this.loaderTarget.style.display = 'none';
+
               this.updateUserInterface(initailQuery);
             });
           });
