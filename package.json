@@ -34,5 +34,14 @@
     "mutationobserver-shim": "^0.3.7",
     "node-fetch": "^2.6.1",
     "resolve-cwd": "^3.0.0"
+  },
+  "jest": {
+    "verbose": false,
+    "testRegex": [
+      "test/javascript/.*_test\\.js"
+    ],
+    "setupFiles": [
+      "./test/javascript/jest-setup.js"
+    ]
   }
 }
