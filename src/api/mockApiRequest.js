@@ -1,15 +1,14 @@
-import { Server } from 'miragejs';
 import jsonData from '../db/data.json';
 
 const mockApiRequest = () => {
-  new Server({
-    routes() {
-      this.namespace = 'api';
-      this.get('/stats/graphs', () => jsonData);
-    },
-  });
+  const fakeApiRequest = () =>
+    new Promise((resolve, reject) => {
+      if (!jsonData) {
+        return setTimeout(() => reject(new Error('Users not found')), 250);
+      }
 
-  const fakeApiRequest = () => fetch('api/stats/graphs');
+      setTimeout(() => resolve(jsonData), 250);
+    });
 
   return fakeApiRequest();
 };

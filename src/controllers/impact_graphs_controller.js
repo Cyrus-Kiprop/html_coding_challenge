@@ -24,26 +24,23 @@ export default class ImpactGraphs extends Controller {
   connect() {
     this.loaderTarget.style.display = 'block';
     mockApiRequest()
-      .then((response) => {
-        if (!response.ok) throw Error(response.statusText);
-        response.json().then((result) => {
-          // clear the localStorage for stale data
-          localStorage.removeItem('data');
+      .then((result) => {
+        // clear the localStorage for stale data
+        localStorage.removeItem('data');
 
-          // render dropdown items
-          renderDropdownItems(Object.keys(result.impacts), this.categoryTarget);
+        // render dropdown items
+        renderDropdownItems(Object.keys(result.impacts), this.categoryTarget);
 
-          // cache the data on the local storage to avoid multiple requests to the server
-          setItem('data', JSON.stringify(result)).then(() => {
-            return getItem('data').then((data) => {
-              // render the bar graph based on the default filter query
-              const initailQuery = Object.keys(JSON.parse(data).impacts)[0];
+        // cache the data on the local storage to avoid multiple requests to the server
+        setItem('data', JSON.stringify(result)).then(() => {
+          return getItem('data').then((data) => {
+            // render the bar graph based on the default filter query
+            const initailQuery = Object.keys(JSON.parse(data).impacts)[0];
 
-              // disable loader
-              this.loaderTarget.style.display = 'none';
+            // disable loader
+            this.loaderTarget.style.display = 'none';
 
-              this.updateUserInterface(initailQuery);
-            });
+            this.updateUserInterface(initailQuery);
           });
         });
       })
