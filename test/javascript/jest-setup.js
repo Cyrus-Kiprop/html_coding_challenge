@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+// eslint-disable-next-line no-unused-vars
 const resolveCwd = require('resolve-cwd');
 
 const shim = fs.readFileSync(

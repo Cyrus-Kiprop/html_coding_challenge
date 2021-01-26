@@ -12,5 +12,6 @@ app.use(express.static(publicPath));
 app.use(webpackMiddleware(webpack(webpackConfig)));
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`Listening on port ${port}`);
 });
