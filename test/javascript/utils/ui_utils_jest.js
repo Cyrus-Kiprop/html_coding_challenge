@@ -21,7 +21,7 @@ describe('uiUtils', () => {
     it('should return a height confined within the parent height height attribute ', () => {
       const parent = document.getElementById('svg-wrapper');
       expect(calcHeight(height, maxHeight, parent)).toBeLessThan(
-        Number(parent.getAttribute('height'))
+        Number(parent.getAttribute('height')),
       );
     });
   });
@@ -30,7 +30,7 @@ describe('uiUtils', () => {
     it('Should return the height of the svg viewport', () => {
       const parent = document.getElementById('svg-wrapper');
       expect(calcViewportHeight(parent)).toEqual(
-        Number(parent.getAttribute('height'))
+        Number(parent.getAttribute('height')),
       );
     });
   });

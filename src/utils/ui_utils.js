@@ -9,8 +9,7 @@ const uiUtils = () => {
 
   const aspectRatio = (hmax, vh) => vh / hmax;
 
-  const calcViewportHeight = (parentElement) =>
-    Number(parentElement.getAttribute('height'));
+  const calcViewportHeight = (parentElement) => Number(parentElement.getAttribute('height'));
 
   const renderDropdownItems = (category, parent) => {
     category.forEach((query) => {
@@ -28,7 +27,7 @@ const uiUtils = () => {
 
     // O(n)
     if (filteredData) {
-      Object.keys(filteredData).forEach((value, counter) => {
+      Object.values(filteredData).forEach((value, counter) => {
         const currentBar = svgBarsArr[counter].childNodes[1];
         // eslint-disable-next-line no-use-before-define
         const newHeight = calcHeight(value, maxHeight, viewportParent);
@@ -53,8 +52,8 @@ const uiUtils = () => {
     const trimHeight = height * scaleDownRatio;
 
     return (
-      viewportHeight -
-      trimHeight * aspectRatio(maxHeight * scaleDownRatio, viewportHeight)
+      viewportHeight
+      - trimHeight * aspectRatio(maxHeight * scaleDownRatio, viewportHeight)
     );
   };
 

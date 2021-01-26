@@ -2,7 +2,7 @@ import { Application } from 'stimulus';
 
 import ImpactGraphs from '../../../src/controllers/impact_graphs_controller';
 import jsonData from '../../../src/db/data.json';
-import webpageData from '../DOM';
+import webpageData from '../domContent';
 
 // mock the localStorage
 const localStorage = { data: {} };

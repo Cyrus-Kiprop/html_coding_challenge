@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus';
 
-import uiUtils from '../utils/UI.utils';
+import uiUtils from '../utils/ui_utils';
 import mockApiRequest from '../api/mockApiRequest';
 import asyncLocalStorage from '../utils/asyncLocalStorage';
 
