@@ -11,5 +11,24 @@
     <script src="bundle.js" async></script>
     <title>Stat Generator</title>
   </head>
-  <body></body>
+  <body>
+    <div
+      class="graphs flex flex-col justify-center items-center"
+      data-controller="impact-graphs"
+      data-impact-graphs-query-value="hello"
+    >
+      <h1
+        class="m-3.5 p-3.5 text-3xl text-white"
+        data-impact-graphs-target="title"
+      >
+        Inject Printer
+      </h1>
+      <select
+        class="p-2.5 w-70 outline-none text-gray-400"
+        name="category"
+        data-impact-graphs-target="category"
+        data-action="change->impact-graphs#handleFilter"
+      ></select>
+    </div>
+  </body>
 </html>
