@@ -1,12 +1,5 @@
 import { Controller } from 'stimulus';
 
-import uiUtils from '../utils/UI.utils';
-import mockApiRequest from '../api/mockApiRequest';
-import asyncLocalStorage from '../utils/asyncLocalStorage';
-
-const { drawBars, renderDropdownItems } = uiUtils;
-const { setItem, getItem } = asyncLocalStorage;
-
 export default class ImpactGraphs extends Controller {
   static targets = ['category', 'title', 'stats', 'svgBar', 'tooltip'];
 
@@ -15,4 +8,20 @@ export default class ImpactGraphs extends Controller {
   };
 
   connect() {}
+  // handler functions  && eventListeners
+  handleBarMouseover(event) {
+    const target = event.target;
+    const index = Number(target.getAttribute('id'));
+    this.tooltipTargets[index].style.display = 'block';
+  }
+
+  handleBarMouseleave(event) {
+    const target = event.target;
+    const index = Number(target.getAttribute('id'));
+    this.tooltipTargets[index].style.display = 'none';
+  }
+
+  handleFilter(event) {
+    this.updateUserInterface(event.target.value);
+  }
 }
