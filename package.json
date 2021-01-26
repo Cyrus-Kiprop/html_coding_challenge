@@ -1,0 +1,38 @@
+{
+  "name": "html_coding_challenge_1",
+  "version": "1.0.0",
+  "description": "Solution to ether coding challenge",
+  "main": "index.js",
+  "repository": "git@github.com:Cyrus-Kiprop/html_coding_challenge_1.git",
+  "author": "Cyrus Kiprop <cyruskiprop254@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "autoprefixer": "^10.2.3",
+    "babel-loader": "^8.1.0",
+    "chokidar": "^3.4.1",
+    "express": "^4.17.1",
+    "postcss-cli": "^8.3.1",
+    "postcss-loader": "^4.2.0",
+    "stimulus": "^2.0.0",
+    "style-loader": "^2.0.0",
+    "tailwindcss": "^2.0.2",
+    "webpack": "^5.17.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-middleware": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "css-loader": "^5.0.1",
+    "fetch-mock": "^9.11.0",
+    "html-webpack-plugin": "^4.5.1",
+    "jest": "^26.6.3",
+    "mini-css-extract-plugin": "^1.3.4",
+    "miragejs": "^0.1.41",
+    "mutationobserver-shim": "^0.3.7",
+    "node-fetch": "^2.6.1",
+    "resolve-cwd": "^3.0.0"
+  }
+}
