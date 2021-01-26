@@ -1,27 +1,33 @@
-import { Controller } from 'stimulus';
+import { Application } from 'stimulus';
 
-export default class ImpactGraphs extends Controller {
-  static targets = ['category', 'title', 'stats', 'svgBar', 'tooltip'];
+import ImpactGraphs from '../../../src/controllers/impact_graphs_controller';
+import jsonData from '../../../src/db/data.json';
+import webpageData from '../DOM';
 
-  static values = {
-    query: String,
-  };
+// mock the localStorage
+const localStorage = { data: {} };
 
-  connect() {}
-  // handler functions  && eventListeners
-  handleBarMouseover(event) {
-    const target = event.target;
-    const index = Number(target.getAttribute('id'));
-    this.tooltipTargets[index].style.display = 'block';
-  }
+describe('ImpactGraphs', () => {
+  describe('connect', () => {
+    beforeEach(() => {
+      document.body.innerHTML = webpageData;
 
-  handleBarMouseleave(event) {
-    const target = event.target;
-    const index = Number(target.getAttribute('id'));
-    this.tooltipTargets[index].style.display = 'none';
-  }
+      const application = Application.start();
 
-  handleFilter(event) {
-    this.updateUserInterface(event.target.value);
-  }
-}
+      application.register('impact', ImpactGraphs);
+    });
+
+    it('should cache the data on localStorage', () => {
+      const setLocalStorage = jest.fn(() => {
+        localStorage.data = jsonData;
+      });
+      setLocalStorage();
+      expect(localStorage.data).toEqual(jsonData);
+    });
+  });
+
+  test('the page has a title of inject printer', () => {
+    const title = document.getElementsByTagName('h1')[0];
+    expect(title.innerHTML.trim()).toEqual('Inject Printer'.trim());
+  });
+});
