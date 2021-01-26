@@ -78,7 +78,11 @@ yarn install
 4. start the app locally
 
 ```sh
-npm start
+yarn start
+```
+## Run Test Cases
+```sh
+yarn jest
 ```
 
 <!-- USAGE EXAMPLES -->
