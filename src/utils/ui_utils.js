@@ -13,7 +13,7 @@ const uiUtils = () => {
     Number(parentElement.getAttribute('height'));
 
   const renderDropdownItems = (category, parent) => {
-    category.map((query) => {
+    category.forEach((query) => {
       const options = document.createElement('option');
       options.value = query;
       options.innerText = query;
