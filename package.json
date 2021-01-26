@@ -6,6 +6,9 @@
   "repository": "git@github.com:Cyrus-Kiprop/html_coding_challenge_1.git",
   "author": "Cyrus Kiprop <cyruskiprop254@gmail.com>",
   "license": "MIT",
+  "scripts": {
+  "start": "node server.js"
+},
   "dependencies": {
     "@babel/core": "^7.10.5",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
