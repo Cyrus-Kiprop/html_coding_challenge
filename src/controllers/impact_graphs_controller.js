@@ -25,4 +25,13 @@ export default class ImpactGraphs extends Controller {
   handleFilter(event) {
     this.updateUserInterface(event.target.value);
   }
+
+  // Dom update logic
+  updateUserInterface(query) {
+    let filteredData = {};
+    getItem('data').then((data) => {
+      const result = JSON.parse(data).impacts;
+      drawBars(result[query], this.tooltipTargets, this.svgBarTargets);
+    });
+  }
 }
